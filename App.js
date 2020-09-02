@@ -1,19 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Category from './components/Category';
+import { NavigationContainer } from '@react-navigation/native';
+import Newsletter from './components/Newsletter';
+import Home from './components/Home';
+import TopNav from './components/TopNav';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Image } from 'react-native';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const Drawer = createDrawerNavigator();
+  return <NavigationContainer>
+            <Drawer.Navigator initialRouteName="Home">
+                <Drawer.Screen name="Home" component={Home} />
+                <Drawer.Screen name="Newsletter" component={Newsletter} />
+                <Drawer.Screen name="Hashtags" component={TopNav} />
+            </Drawer.Navigator>
+         </NavigationContainer>
+}
